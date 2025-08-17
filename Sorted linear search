@@ -1,0 +1,46 @@
+T.C :O(n)
+S.C :O(1)
+
+public class SimpleLinearSearch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter size of array: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+        System.out.println("Enter elements of array:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print("Enter element to search: ");
+        int key = sc.nextInt();
+
+        boolean found = false;
+        int index = -1;
+        Arrays.sort(arr);
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == key) {
+                found = true;
+                index = i;
+                break;
+            } 
+            if(arr[i]>key)
+            {
+               break;
+            }
+
+        }
+
+        if (found) {
+            System.out.println("Element found at index " + index);
+        } else {
+            System.out.println("Element not found in the array.");
+        }
+
+        sc.close();
+    }
+}
+
+
