@@ -1,0 +1,59 @@
+import java.util.*;
+class Main{
+    
+    private static void swap(int arr[],int i,int j)
+    {
+      
+            int temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+            
+        
+        
+    }
+    private static int findPartition(int arr[],int begin, int end )
+    {
+        int pivot=arr[end];//last_element
+        
+        int i=begin-1;
+        
+        for(int j=begin;j<end;j++)
+        {
+            if(arr[j]<pivot)
+            {
+                i++;
+                swap(arr,i,j);
+            }
+        }
+        
+        //final swap for pivot position
+        swap(arr,i+1,end);
+        return i+1;
+    }
+    public  static void quickSort(int arr[],int begin,int end)
+    {
+        //base acse is important
+        if(begin<end)
+        {
+            int partition=findPartition(arr,begin,end );
+            
+            quickSort(arr,begin,partition-1);
+            quickSort(arr,partition+1,end);
+        }
+    }
+    public static void main(String [] args)
+    {
+       Scanner sc=new Scanner(System.in);
+       int n=sc.nextInt();
+       int arr[]=new int[n];
+       for(int i=0;i<n;i++)
+       {
+           arr[i]=sc.nextInt();
+       }
+       quickSort(arr,0,n-1);
+       for(int i=0;i<n;i++)
+       {
+           System.out.print(arr[i]+" ");
+       }
+    }
+}
