@@ -1,0 +1,66 @@
+import java.util.*;
+
+class LinkedList
+{
+    private Node head;
+    private Node tail;
+    private int length;
+    class Node
+    {
+        int value;
+        Node nxt;
+        Node(int value)
+        {
+            this.value=value;
+        }
+        
+    }
+    public LinkedList(int value)
+    {
+        Node nn=new Node(value);
+        head=nn;
+        tail=nn;
+        length++;
+    }
+    
+    public void append(int value)
+    {
+        Node nn=new Node(value);
+        if(length==0)
+        {
+            head=nn;
+            tail=nn;
+        }
+        else
+        {
+            tail.nxt=nn;
+            tail=nn;
+        }
+        length++;
+    }
+    
+    public void printList()
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.println(temp.value);
+            temp=temp.nxt;
+        }
+    }
+    
+    
+    
+}
+public class Main
+{
+    
+	public static void main(String[] args) 
+	{
+	   LinkedList ll=new LinkedList(4);
+	   ll.append(5);
+	   ll.append(6);
+	   ll.append(7);
+	   ll.printList();
+	}
+}
