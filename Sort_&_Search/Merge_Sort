@@ -1,0 +1,81 @@
+import java.util.*;
+class Main 
+{
+    private static void merge(int arr[],int leftArr[],int rightArr[],int left,int right)
+    {
+        int i=0,j=0,k=0;
+
+        //time complexity===="n"
+        //merge array based on the smaller values
+        while(i<left && j<right)
+        {
+            if(leftArr[i]<=rightArr[j])
+            {
+                arr[k++]=leftArr[i++];
+            }
+            else
+            {
+                arr[k++]=rightArr[j++];
+            }
+        }
+        
+        //remaining 
+        while(i<left)
+        {
+            arr[k++]=leftArr[i++];
+        }
+        while(j<right)
+        {
+            arr[k++]=rightArr[j++];
+        }
+    }
+    public static void mergeSort(int arr[],int n)
+    {
+        if(n<2)
+        {
+            return;
+        }
+
+        //time complexity===="logn"
+        //find the middle position & create left & right partitions
+        int mid=n/2;
+        int leftArr[]=new int[mid];
+        int rightArr[]=new int[n-mid];
+
+        //fill up partitions
+        for(int i=0;i<mid;i++)
+        {
+            leftArr[i]=arr[i];
+        }
+        for(int i=mid;i<n;i++)
+        {
+            rightArr[i-mid]=arr[i];
+        }
+
+        //apply merge sort on the left & right partitions
+        mergeSort(leftArr,mid);
+        mergeSort(rightArr,n-mid);
+ 
+        //finally merge the partitions
+        merge(arr,leftArr,rightArr,mid,n-mid);
+    }
+    public static void main(String [] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        mergeSort(arr,n);
+        for(int i=0;i<n;i++)
+        {
+            
+        System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+
+timeomplexity = O(n*logn)
