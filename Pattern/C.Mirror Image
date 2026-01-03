@@ -1,0 +1,21 @@
+        int l=0;
+        
+        for(int i=-n;i<=n;i++) //-n to =n
+        {
+           if(i<0)
+           {
+             l=-i;  
+           }
+           else{
+               l=i;
+           }
+           for(int s=0;s<(n-l);s++)
+           {
+               System.out.print(" ");//one space is enough becoz want to print between the stars
+           }
+           for(int j=0;j<l+1;j++)
+           {
+               System.out.print("* ");
+           }
+           System.out.println();
+        }
