@@ -1,0 +1,32 @@
+
+public class Main
+{
+	public static void main(String[] args) {
+	    
+		int arr[]={3,2,5,7,10,0};
+		int n=arr.length;
+		
+		
+		for(int i=0;i<n-1;i++)
+		{
+		    int minIndex=i;
+		    for(int j=i+1;j<n;j++)
+		    {
+		        if(arr[j]<arr[minIndex])
+		        {
+		            minIndex=j;
+		        }
+		    }
+		    int temp=arr[minIndex];
+		    arr[minIndex]=arr[i];
+		    arr[i]=temp;
+		}
+		
+		
+	}
+}
+
+//sort based on height order
+⏱️ Time Complexity: O(n²)---------It always performs (n - 1) + (n - 2) + ... + 1 comparisons, regardless of input order.
+
+💾 Space Complexity: O(1)--------- It sorts the array in-place using only a constant amount of extra memory. && no extra array
