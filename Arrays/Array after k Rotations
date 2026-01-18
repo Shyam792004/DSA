@@ -1,0 +1,33 @@
+int n = sc.nextInt();
+int k = sc.nextInt();
+k = k % n; // handle k > n
+
+int[] arr = new int[n];
+for (int i = 0; i < n; i++) {
+    arr[i] = sc.nextInt();
+}
+
+// Reverse helper
+void reverse(int[] arr, int start, int end) {
+    while (start < end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+// Step 1: reverse whole array
+reverse(arr, 0, n - 1);
+
+// Step 2: reverse first k elements
+reverse(arr, 0, k - 1);
+
+// Step 3: reverse remaining elements
+reverse(arr, k, n - 1);
+
+// Print rotated array
+for (int i = 0; i < n; i++) {
+    System.out.print(arr[i] + " ");
+}
