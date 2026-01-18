@@ -1,0 +1,35 @@
+ static int [] remove_dupliate(int [] arr)
+    {
+        Set<Integer> set = new HashSet<>();
+
+       // Add elements to the set (duplicates automatically ignored)
+        for (int i : arr) {
+            set.add(i);
+        }
+
+        // Convert set to array manually
+        int[] result = new int[set.size()];
+        int index = 0;
+        for (int num : set) {
+            result[index++] = num;
+        }
+
+        return result;
+    }
+    
+	public static void main(String[] args) {
+	   Scanner sc=new Scanner(System.in);
+	   int n=sc.nextInt();
+	  
+	   int [] arr=new int[n];
+	   for(int i=0;i<n;i++)
+	   {
+	       arr[i]=sc.nextInt();
+	   }
+	   
+	   
+	   int ans[]=remove_dupliate(arr);
+	   
+	   System.out.println(Arrays.toString(ans));
+	   
+	   }
