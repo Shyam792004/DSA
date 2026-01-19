@@ -1,0 +1,51 @@
+import java.util.*;
+
+public class Main
+{
+   
+  static String reverse(String str)
+  {
+      char[]c=str.toCharArray();
+      int l=0;
+      int r=c.length-1;
+      while(l<r)
+      {
+          char temp=c[l];
+          c[l]=c[r];
+          c[r]=temp;
+          l++;
+          r--;
+      }
+      return new String (c);
+  }
+    
+	public static void main(String[] args) {
+	   Scanner sc=new Scanner(System.in);
+	   String str=sc.nextLine();
+	   StringBuilder sb=new StringBuilder(str);
+	   
+	   if(str.equals(sb.reverse().toString()))
+	   {
+	       System.out.println("palindrome");
+	   }
+	   else{
+	       System.out.println("not a palindrome");
+	   }
+	   
+	   
+	   String ans=reverse(str);
+	   if(str.equals(ans))
+	   {
+	       System.out.println("palindrome");
+	   }
+	   else
+	   {
+	       System.out.println("not a palindrome");
+	   }
+	  
+	  
+	   
+	   
+	   
+	}
+}
