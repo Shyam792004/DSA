@@ -1,0 +1,16 @@
+      String str=sc.nextLine();
+	   int []freq=new int[256];//256 represents the total number of ASCII characters.
+	   
+	   for(char c:str.toCharArray())
+	   {
+	       freq[c]++;
+	   }
+	   
+	   for(char c:str.toCharArray())
+	   {
+	       if(freq[c]==1)
+	       {
+	           System.out.print(c);
+	           break;
+	       }
+	   }
