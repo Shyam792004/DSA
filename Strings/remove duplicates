@@ -1,0 +1,20 @@
+
+
+        String s1=sc.nextLine();
+        Set<Character>st=new LinkedHashSet<>();
+        for(char c:s1.toCharArray())
+        {
+            if(!st.contains(c))
+            {
+                st.add(c);
+            }
+        }
+
+        StringBuilder sb=new StringBuilder();
+        for(char c:st)
+        {
+            sb.append(c);
+        }
+        
+        System.out.println(sb.toString());
+  
