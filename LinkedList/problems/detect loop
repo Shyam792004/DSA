@@ -1,0 +1,102 @@
+import java.util.*;
+
+class LinkedList 
+{
+    private Node head;
+    private Node tail;
+    private int length;
+    
+    class Node
+    {
+        int data;
+        Node nxt;
+        Node(int value)
+        {
+            this.data=value;
+            nxt=null;
+        }
+    }
+    public LinkedList()
+    {
+        head=null;
+        tail=null;
+        length=0;
+    }
+    public void append(int value)
+    {
+        Node nn=new Node(value);
+        if(length==0)
+        {
+            head=nn;
+            tail=nn;
+        }
+        else{
+            tail.nxt=nn;
+            tail=nn;
+        }
+        length++;
+    }
+    // create loop (for testing)
+    public void createLoop()
+    {
+        if(head==null)
+        {
+            return ;
+        }
+        Node temp=head;
+        Node join = head.nxt;// loop starts at 2nd node
+        while(temp.nxt!=null)
+        {
+            temp=temp.nxt;
+        }
+        temp.nxt=join;
+    }
+    
+    // Floyd’s Cycle Detection
+    public boolean detectLoop()
+    {
+        Node slow=head;
+        Node fast=head;
+        
+        while(fast!=null &&fast.nxt!=null)
+        {
+            slow=slow.nxt;
+            fast=fast.nxt.nxt;
+            if(fast.data==slow.data)
+            {
+                return true;
+            }
+        }
+        return false;
+        
+    }
+
+    
+}
+class Main 
+{
+    public static void main(String [] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        LinkedList m=new LinkedList();
+        for(int i=0;i<n;i++)
+        {
+            int value=sc.nextInt();
+            m.append(value);
+        }
+        
+        
+
+        m.createLoop();
+        // Floyd’s Cycle Detection
+        m.detectLoop();
+        if(m.detectLoop())
+        {
+            System.out.println("loop detected");
+        }
+        
+        
+        
+    }
+}
