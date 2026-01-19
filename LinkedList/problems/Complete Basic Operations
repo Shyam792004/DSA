@@ -1,0 +1,265 @@
+import java.util.*;
+
+class LinkedList
+{
+    private Node head;
+    private Node tail;
+    private int length;
+    
+
+    class Node 
+    {
+        int data;
+        Node nxt;
+        Node(int data)
+        {
+            this.data=data;
+            this.nxt=null;
+        }
+    }
+    //no args-constructor
+    public LinkedList()
+    {
+       
+        head=null;
+        tail=null;
+        length=0;
+    }
+    //insert - append
+    public void append(int value)
+    {
+        Node nn=new Node(value);
+        if(length==0)
+        {
+            head=nn;
+            tail=nn;
+        }
+        else
+        {
+            tail.nxt=nn;
+            tail=nn;
+        }
+        length++;
+    }
+    //print
+    public void printLinked()
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.nxt;
+        }
+        System.out.println();
+    }
+    //reverse
+    public void reverse()
+    {
+        Node temp=head;
+        head=tail;
+        tail=temp;
+        Node after=temp.nxt;
+        Node before=null;
+        for(int i=0;i<length;i++)
+        {
+            after=temp.nxt;
+            temp.nxt=before;
+            before=temp;
+            temp=after;
+        }
+    }
+    
+    //prepend
+    public void prepend(int value)
+    {
+        Node nn=new Node(value);
+        if(length==0)
+        {
+            head=nn;
+            tail=nn;
+        }
+        else
+        {
+            nn.nxt=head;
+            head=nn;
+        }
+        length++;
+    }
+    
+    //get
+    public  Node get(int index)
+    {
+        if(index<0||index>=length)
+        {
+            return null;
+        }
+            Node temp=head;
+        
+            for(int i=0;i<index;i++)
+            {
+                temp=temp.nxt;
+            }
+        
+        return temp;
+    }
+    
+    //set
+     public void set(int index,int value)
+     {
+         Node temp=get(index);
+         if(temp!=null)
+         {
+             temp.data=value;
+         }
+     }
+     
+     //insert
+     public void insert(int index,int value)
+     {
+         if(index<0||index>length)
+         {
+             return ;
+         }
+         if(index==0)
+         {
+             prepend(value);
+         }
+         if(index==length)
+         {
+             append(value);
+         }
+         Node nn=new Node(value);
+         Node temp=get(index-1);
+         nn.nxt=temp.nxt;
+         temp.nxt=nn;
+         length++;
+         
+     }
+     //------------------------------
+     //remove 
+     //1.remove first
+     public Node removeFirst()
+     {
+         if(length==0)
+         {
+             return null ;
+         }
+         Node temp=head;
+         head=head.nxt;
+         temp.nxt=null;
+         length--;
+         if(length==0)
+         {
+             tail=null;
+         }
+         return temp;
+         
+     }
+     //2.removeLast
+     public Node removeLast()
+     {
+         if(length==0)
+         {
+             return null;
+         }
+         
+         Node temp=head;
+         Node pre=head;
+         while(temp.nxt!=null)
+         {
+             pre=temp;
+             temp=temp.nxt;
+         }
+         tail=pre;
+         tail.nxt=null;
+         length--;
+         if(length==0)
+         {
+             head=null;
+         }
+         return temp;
+         
+     }
+     
+     //3.remove 
+     public Node remove(int index)
+     {
+        if(index<0||index>length-1)
+        {
+            return null;
+        }
+        if(index==0)
+        {
+            return removeFirst();
+        }
+        if(index==length-1)
+        {
+            return removeLast();
+        }
+        Node pre=get(index-1);
+        Node temp=pre.nxt;
+        
+        pre.nxt=temp.nxt;
+        temp.nxt=null;
+        length--;
+        return temp;
+     }
+     
+    
+
+}
+    
+    
+class Main 
+{
+    public static void main(String [] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        LinkedList m=new LinkedList();
+        for(int i=0;i<n;i++)
+        {
+            int val=sc.nextInt();
+            m.append(val);
+        }
+       
+       //add elements
+        System.out.println("append - normal");
+        m.printLinked();
+        System.out.println("prepend ");
+        m.prepend(10);    
+        m.printLinked();
+        m.insert(2,7);
+        System.out.println("after insert");
+        
+        //
+        m.printLinked();
+        System.out.println("reverse");
+        m.reverse();
+        m.printLinked();
+        System.out.println("get "+"\n"+m.get(2).data);
+        m.set(3,100);
+        System.out.println("after set");
+        m.printLinked();
+        
+        
+        //remove
+        
+        //1.remove first
+        System.out.println("remove first"+"\n"+m.removeFirst().data);
+        m.printLinked();
+        //2.remove last
+        System.out.println("remove last"+"\n"+m.removeLast().data);
+        m.printLinked();
+        //3.remove
+        System.out.println("remove "+m.remove(1).data);
+        m.printLinked();
+        
+        
+        
+        
+        
+        
+        
+    }
+}
