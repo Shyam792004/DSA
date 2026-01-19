@@ -1,0 +1,17 @@
+
+
+     String s1=sc.nextLine();
+	   String s2=sc.nextLine();
+	   
+	   char []c1=s1.toCharArray();
+	   Arrays.sort(c1);
+	   String str1=new String(c1).trim();
+	   
+	   char []c2=s2.toCharArray();
+	   Arrays.sort(c2);
+	   String str2=new String(c2).trim();
+	   
+	   if(str1.equals(str2))
+	   {
+	       System.out.println("true");
+	   }
