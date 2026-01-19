@@ -1,0 +1,44 @@
+import java.util.*;
+class Main 
+{
+    public static int[] twoSum(int[]arr,int tar)
+    {
+        HashMap<Integer,Integer>mp=new HashMap<>();
+        
+        for(int i=0;i<arr.length;i++)
+        {
+            
+            int complement=tar-arr[i];
+            
+            if(mp.containsKey(complement))
+            {
+                //send both index pair
+                return new int[]{mp.get(complement),i};
+            }
+            mp.put(arr[i],i);
+        }
+        return new int[]{-1,-1};
+    }
+    public static void main(String [] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int arr[]=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i]=sc.nextInt();
+        }
+        int tar=sc.nextInt();
+        int [] ans=twoSum(arr,tar);
+        if(ans[0]!=-1)
+        {
+            System.out.println(arr[0]+" "+arr[1]);
+        }
+        else{
+            System.out.println("no pair found");
+        }
+        
+        
+        
+    }
+}
