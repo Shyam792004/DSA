@@ -1,0 +1,22 @@
+
+	   int [] freq=new int[256];
+	   
+	   for(char c:s1.toCharArray())
+	   {
+	       freq[c]++;
+	   }
+	   for(char c:s2.toCharArray())
+	   {
+	       freq[c]--;
+	   }
+
+       int flag=0;
+	   for(int c:freq)
+	   {
+	       if(c!=0)
+	       {
+	           flag=1;
+	           System.out.println("false");
+	           break;
+	       }
+	   }
