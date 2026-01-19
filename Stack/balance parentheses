@@ -1,0 +1,45 @@
+import java.util.*;
+class Main 
+{
+    static boolean balanceParenthese(String str)
+    {
+        Stack<Character>sk=new Stack<>();
+        
+        for(char ch:str.toCharArray())
+        {
+            if(ch=='('||ch=='{'||ch=='[')
+            {
+                sk.push(ch);
+            }
+            else if(ch==')'||ch=='}'||ch==']')
+            {
+                if(sk.isEmpty())
+                {
+                    return false;
+                }
+                char top=sk.pop();
+                if(ch==')'&& top!='('||ch==']'&& top!='['||ch=='}'&& top!='{')
+                {
+                    return false;
+                }
+            }
+            
+        }
+        return true;
+        
+    }
+    public static void main(String [] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String str=sc.nextLine();
+        
+        if(balanceParenthese(str))
+        {
+            System.out.println("balance");
+        }
+        else{
+            System.out.println("not balance");
+        }
+        
+    }
+}
